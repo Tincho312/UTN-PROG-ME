@@ -89,6 +89,8 @@ class OperacionesFraccion:
             f2 = Fraccion(n2, d2)
 
             suma = Fraccion.sumar(f1, f2)
+            # suma = f1.sumar(f2)
+
             resta = Fraccion.restar(f1, f2)
             multiplicacion = Fraccion.multiplicar(f1, f2)
             division = Fraccion.dividir(f1, f2)
