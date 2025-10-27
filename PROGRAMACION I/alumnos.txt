@@ -1,4 +1,7 @@
 Juan;Pérez;53365;8
 María;López;55654;10
-Pablo;Gómez;58999;6
+Pablo;Gómez;58999;4
 Gerard;Magni;59765;10
+
+luis;begri;12345;8.0
+ertet;ertert;34344;2.0

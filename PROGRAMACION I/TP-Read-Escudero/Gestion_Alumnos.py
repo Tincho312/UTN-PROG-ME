@@ -6,7 +6,7 @@ def leer_alumnos():
     alumnos = []
     diccionario = {}
 
-    # Si no existe el archivo, crearlo vacío
+    # Si no existe el archivo lo creamos vacío
     if not os.path.exists("alumnos.txt"):
         open("alumnos.txt", "w").close()
         return alumnos, diccionario
@@ -27,8 +27,8 @@ def leer_alumnos():
                 }
                 alumnos.append(alumno)
                 diccionario[legajo] = alumno
-    except (IOError, ValueError) as e:
-        print(f"Error al leer el archivo: {e}")
+    except (IOError, ValueError) as error_archivo:
+        print(f"Error al leer el archivo: {error_archivo}")
 
     return alumnos, diccionario
 
@@ -39,9 +39,9 @@ def mostrar_alumnos(alumnos):
         print("No hay alumnos cargados.")
     else:
         print("\n~ LISTA DE ALUMNOS ~")
-        for a in alumnos:
+        for alumno in alumnos:
             print(
-                f"{a['nombre']} {a['apellido']} - Legajo: {a['legajo']} - Nota: {a['nota']}"
+                f"{alumno['nombre']} {alumno['apellido']} - Legajo: {alumno['legajo']} - Nota: {alumno['nota']}"
             )
         print("------------------------\n")
 
@@ -97,32 +97,32 @@ def agregar_alumno(alumnos, diccionario):
         with open("alumnos.txt", "a", encoding="utf-8") as archivo:
             archivo.write(f"{nombre};{apellido};{legajo};{nota}\n")
         print("Alumno agregado correctamente.\n")
-    except IOError as e:
-        print(f"Error al guardar el alumno: {e}")
+    except IOError as error_archivo:
+        print(f"Error al guardar el alumno: {error_archivo}")
 
 
 # Función: guardar_aprobados
 def guardar_aprobados(alumnos):
     # Guarda en aprobados.txt a los alumnos con nota >= 6 y los muestra.
-    aprobados = [a for a in alumnos if a["nota"] >= 6]
+    aprobados = [alumno for alumno in alumnos if alumno["nota"] >= 6]
 
     try:
         with open("aprobados.txt", "w", encoding="utf-8") as archivo:
-            for a in aprobados:
+            for alumno_aprobado in aprobados:
                 archivo.write(
-                    f"{a['nombre']};{a['apellido']};{a['legajo']};{a['nota']}\n"
+                    f"{alumno_aprobado['nombre']};{alumno_aprobado['apellido']};{alumno_aprobado['legajo']};{alumno_aprobado['nota']}\n"
                 )
-    except IOError as e:
-        print(f"Error al escribir en aprobados.txt: {e}")
+    except IOError as error_archivo:
+        print(f"Error al escribir en aprobados.txt: {error_archivo}")
         return
 
     print("\n~ APROBADOS ~")
     if not aprobados:
         print("No hay alumnos aprobados.")
     else:
-        for a in aprobados:
+        for alumno_aprobado in aprobados:
             print(
-                f"{a['nombre']} {a['apellido']} - Legajo: {a['legajo']} - Nota: {a['nota']}"
+                f"{alumno_aprobado['nombre']} {alumno_aprobado['apellido']} - Legajo: {alumno_aprobado['legajo']} - Nota: {alumno_aprobado['nota']}"
             )
     print("-----------------\n")
 
@@ -132,7 +132,7 @@ def menu():
     alumnos, diccionario = leer_alumnos()
 
     while True:
-        print("===== MENÚ =====")
+        print("|~~ MENÚ ~~|")
         print("1. Ver alumnos")
         print("2. Agregar alumno")
         print("3. Generar y mostrar aprobados")

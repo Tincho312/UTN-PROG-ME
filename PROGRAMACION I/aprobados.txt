@@ -1,0 +1,4 @@
+Juan;Pérez;53365;8.0
+María;López;55654;10.0
+Gerard;Magni;59765;10.0
+luis;begri;12345;8.0
